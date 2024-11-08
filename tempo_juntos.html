@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tempo Juntos</title>
+  <style>
+    @font-face {
+      font-family: 'CODE Light';
+      src: url('fonts/CODE Light.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'CODE Bold';
+      src: url('fonts/CODE Bold.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'CODE Light', monospace;
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(40,20,60,1) 100%);
+      color: rgb(182, 57, 255);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+      height: 100vh;
+      justify-content: center;
+    }
+
+    nav {
+      background-color: rgba(42, 33, 51, 0.9);
+      padding: 15px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      color: white;
+      font-family: 'CODE Bold', monospace;
+      font-weight: 400;
+      border-radius: 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      padding: 10px 20px;
+      background-color: rgba(42, 33, 51, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(61, 42, 80, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      margin-top: 140px;
+      font-size: 2.5em;
+      color: white;
+    }
+
+    #time-counter {
+      font-size: 2em;
+      background: linear-gradient(90deg, violet, indigo, blue, green, yellow, orange, red);
+      background-size: 400% 400%;
+      animation: rainbow 10s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-top: 20px;
+    }
+
+    @keyframes rainbow {
+      0%, 100% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+    }
+
+    #photo-line {
+      display: flex;
+      align-items: center;
+      margin: 40px 0;
+    }
+
+    .circle {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 3px solid rgb(182, 57, 255);
+      margin: 0 20px;
+    }
+
+    .circle img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .line {
+      width: 200px;
+      height: 2px;
+      background-color: rgb(182, 57, 255);
+      position: relative;
+    }
+
+    .line::before {
+      content: '';
+      width: 20px;
+      height: 20px;
+      background-color: rgb(182, 57, 255);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    #te-amo-container {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-family: 'CODE Bold', monospace;
+      font-size: 36px;
+    }
+
+    #te-amo .te {
+      color: white;
+    }
+
+    #te-amo .amo {
+      color: rgb(128, 0, 85);
+    }
+
+    #by-filipe {
+      font-size: 18px;
+      color: white;
+      margin-top: 5px;
+    }
+
+    /* Efeito de estrelas */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Menu de navegação -->
+  <nav>
+    <a href="index.html">Espaço</a>
+    <a href="fotos.html">Fotos</a>
+    <a href="tempo_juntos.html">Tempo Juntos</a>
+  </nav>
+
+  <h1>Estamos juntos há...</h1>
+  <div id="time-counter"></div>
+
+  <div id="photo-line">
+    <div class="circle">
+      <img src="imagens/filipe.jpg" alt="Filipe"> 
+    </div>
+    <div class="line"></div>
+    <div class="circle">
+      <img src="imagens/isa.jpg" alt="Isabela"> 
+    </div>
+  </div>
+
+  <div id="te-amo-container">
+    <div id="te-amo"><span class="te">Te</span> <span class="amo">Amo</span></div>
+    <div id="by-filipe">by Filipe</div>
+  </div>
+
+  <script>
+    function startCounter() {
+      const startDate = new Date("2023-06-30T00:00:00");
+      
+      function updateCounter() {
+        const now = new Date();
+        const diff = now - startDate;
+        
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("time-counter").innerHTML = 
+          `${days} dias, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+      }
+
+      updateCounter();
+      setInterval(updateCounter, 1000);
+    }
+
+    startCounter();
+
+    // Efeito de estrelas
+    function createStar() {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        document.body.removeChild(star);
+      }, 4000);
+    }
+
+    setInterval(createStar, 50); // Aumenta a frequência das estrelas
+  </script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espaço das Memórias</title>
+  <style>
+    @font-face {
+      font-family: 'CODE Light';
+      src: url('fonts/CODE Light.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'CODE Bold';
+      src: url('fonts/CODE Bold.ttf') format('truetype');
+    }
+
+    /* Configurações gerais da página */
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'CODE Bold', monospace;
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(40,20,60,1) 100%);
+      color: rgb(182, 57, 255);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    /* Barra de navegação */
+    .navbar {
+      background-color: rgba(42, 33, 51, 0.9);
+      padding: 15px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      color: white;
+      font-family: 'CODE Bold', monospace;
+      font-weight: 400;
+      border-radius: 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    /* Estilo dos links de navegação */
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      padding: 10px 20px;
+      background-color: rgba(42, 33, 51, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .navbar a:hover {
+      background-color: rgba(61, 42, 80, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Efeito de estrelas */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Estilo do Sol */
+    #sun {
+      position: absolute;
+      top: 150px;
+      left: 50px;
+      width: 250px;
+      height: 250px;
+      background: radial-gradient(circle at center, gold 0%, orange 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0px 0px 20px 10px rgba(255, 223, 0, 0.5);
+      transform: rotate(-30deg);
+      animation: sunSpin 10s infinite linear;
+    }
+
+    @keyframes sunSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Estilo do Texto de Boas-Vindas */
+    #welcome-text {
+      font-family: 'CODE Bold', monospace;
+      font-weight: 700;
+      font-size: 36px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: colorChange 5s infinite, textPulse 3s infinite ease-in-out;
+    }
+
+    @keyframes colorChange {
+      0%, 100% { color: violet; }
+      25% { color: rgb(128, 0, 85); }
+      50% { color: indigo; }
+      75% { color: rgb(122, 45, 209); }
+    }
+
+    @keyframes textPulse {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); }
+      50% { transform: translate(-50%, -50%) scale(1.1); }
+    }
+
+    /* Estilo do Texto "Te Amo" e "by Filipe" */
+    #te-amo-container {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      font-family: 'CODE Bold', monospace;
+      font-size: 36px;
+      animation: textPulse 3s infinite ease-in-out;
+    }
+
+    #te-amo .te {
+      color: white;
+    }
+
+    #te-amo .amo {
+      color: rgb(128, 0, 85);
+      animation: colorChange 5s infinite;
+    }
+
+    #by-filipe {
+      font-size: 18px;
+      color: white;
+      margin-top: 5px;
+    }
+
+    /* Estilo dos foguetes */
+    #rocket-left {
+      position: absolute;
+      top: 45%; /* Ajustado para mais próximo do título */
+      left: -100px;
+      width: 50px;
+      height: 100px;
+      background-image: url('imagens/rocketEsquerda.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: rocketMoveLeft 5s linear infinite;
+    }
+
+    #rocket-right {
+      position: absolute;
+      bottom: 40%; /* Ajustado para ficar 4 linhas abaixo do texto */
+      right: -100px;
+      width: 50px;
+      height: 100px;
+      background-image: url('imagens/rocketDireita.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      animation: rocketMoveRight 5s linear infinite;
+    }
+
+    @keyframes rocketMoveLeft {
+      0% { left: -100px; }
+      100% { left: 100%; }
+    }
+
+    @keyframes rocketMoveRight {
+      0% { right: -100px; }
+      100% { right: 100%; }
+    }
+
+  </style>
+</head>
+<body>
+  <div id="sun">Isabela</div>
+  <div class="navbar">
+    <a href="index.html">Espaço</a>
+    <a href="fotos.html">Fotos</a>
+    <a href="tempo_juntos.html">Tempo Juntos</a>
+  </div>
+  <div id="welcome-text">Bem-vindo a nossas memórias</div>
+  <div id="te-amo-container">
+    <div id="te-amo"><span class="te">Te</span> <span class="amo">Amo</span></div>
+    <div id="by-filipe">by Filipe</div>
+  </div>
+  <div id="rocket-left"></div> <!-- Foguete da esquerda para a direita -->
+  <div id="rocket-right"></div> <!-- Foguete da direita para a esquerda -->
+  <script>
+    function createStar() {
+      const star = document.createElement("div");
+      star.classList.add("star");
+      star.style.top = Math.random() * window.innerHeight + "px";
+      star.style.left = Math.random() * window.innerWidth + "px";
+      star.style.animationDuration = Math.random() * 2 + 1 + "s";
+      document.body.appendChild(star);
+
+      setTimeout(() => {
+        star.remove();
+      }, 2000);
+    }
+
+    setInterval(createStar, 100);
+  </script>
+</body>
+</html>

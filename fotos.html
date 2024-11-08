@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nossas Memórias</title>
+  <style>
+    @font-face {
+      font-family: 'CODE Light';
+      src: url('fonts/CODE Light.ttf') format('truetype');
+    }
+
+    @font-face {
+      font-family: 'CODE Bold';
+      src: url('fonts/CODE Bold.ttf') format('truetype');
+    }
+
+    body {
+      margin: 0;
+      font-family: 'CODE Light', monospace;
+      background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(40,20,60,1) 100%);
+      color: rgb(182, 57, 255);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    nav {
+      background-color: rgba(42, 33, 51, 0.9);
+      padding: 15px 20px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      color: white;
+      font-family: 'CODE Bold', monospace;
+      font-weight: 400;
+      border-radius: 10px;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 300;
+      padding: 10px 20px;
+      background-color: rgba(42, 33, 51, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    nav a:hover {
+      background-color: rgba(61, 42, 80, 0.9);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 2.5em;
+      color: white;
+    }
+
+    .gallery-container {
+      position: relative;
+      width: 90%;
+      max-width: 800px;
+      height: 450px;
+      margin-top: 20px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      width: 100%;
+    }
+
+    .gallery-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item img {
+        width: 600px;
+        height: 400px;
+        object-fit: contain;
+    }
+
+    .gallery-item p {
+      margin-top: 10px;
+      font-size: 1em;
+      color: rgb(182, 57, 255);
+    }
+
+    
+    @keyframes colorChange {
+      from { color: rgb(182, 57, 255); }
+      to { color: rgb(255, 182, 193); }
+    }
+
+    @keyframes floatText {
+      0%, 100% { transform: translateX(0); }
+      50% { transform: translateX(10px); }
+    }
+
+    @keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(42, 33, 51, 0.7);
+      border: none;
+      color: white;
+      font-size: 2em;
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s;
+      z-index: 1000;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(61, 42, 80, 0.9);
+    }
+
+    .nav-button.left {
+      left: 10px;
+    }
+
+    .nav-button.right {
+      right: 10px;
+    }
+
+    /* Efeito de estrelas */
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: white;
+      border-radius: 50%;
+      animation: twinkle 1.5s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="index.html">Espaço</a>
+    <a href="fotos.html">Fotos</a>
+    <a href="tempo_juntos.html">Tempo Juntos</a>
+  </nav>
+
+  <h1>Nossas Memórias</h1>
+
+  <div class="gallery-container">
+    <button class="nav-button left" onclick="prevImage()">&#10094;</button>
+    <div class="gallery">
+      <!-- 20 imagens com texto de legenda -->
+      <div class="gallery-item">
+        <img src="imagens/1.jpg" alt="Foto 1">
+        <p>E foi aqui que tudo começou...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/2.jpg" alt="Foto 2">
+        <p>Dormindo depois de estudar muitoooo...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/3.jpg" alt="Foto 3">
+        <p>Dia da camisa de time...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/4.jpg" alt="Foto 4">
+        <p>Você fazendo bico pra câmera plena...</p>
+      </div>
+      <!-- Continue adicionando imagens e legendas até 20 -->
+      <div class="gallery-item">
+        <img src="imagens/5.jpg" alt="Foto 5">
+        <p>Você muita linda sendo minha modelo...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/6.jpg" alt="Foto 6">
+        <p>Minha primeira vez num BUSÃO indo pra um retiro com você...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/7.jpg" alt="Foto 7">
+        <p>Uma das nossas melhores fotos e no mês do NATALLL...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/8.jpg" alt="Foto 8">
+        <p>E aqui temos o nosso PRIMEIRO NATAL JUNTOS, te amo meu amor...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/9.jpg" alt="Foto 9">
+        <p>Nosso rolê do parque do ingá quando você voltou...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/10.jpg" alt="Foto 10">
+        <p>Mais uma do rolê no parque...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/11.jpg" alt="Foto 11">
+        <p>A gente no rodeio bem plenos...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/12.jpg" alt="Foto 12">
+        <p>Você e a Aiyumi duas divas...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/13.jpg" alt="Foto 13">
+        <p>Nós dois juntinhos lindos...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/14.jpg" alt="Foto 14">
+        <p>Você bem orgulhosa com a camisa do corinthians, ficou linda...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/15.jpg" alt="Foto 15">
+        <p>A gente indo pra um almoço em família...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/16.jpg" alt="Foto 16">
+        <p>Você estudando muitoo...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/17.jpg" alt="Foto 17">
+        <p>Noite do hambúrguer...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/18.jpg" alt="Foto 18">
+        <p>Nossa última saída no aniversário da Melo...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/19.jpg" alt="Foto 19">
+        <p>Mais uma do niver da Melo...</p>
+      </div>
+      <div class="gallery-item">
+        <img src="imagens/20.jpg" alt="Foto 20">
+        <p>Nesse último ano tivemos nossos momentos felizes, tristes, nossas lutas, derrotas e vitória, mas a cada vez que passavamos por algo eu ficava feliz, porque estava passando tudo isso com você meu amor, desde de o começo quando meu pai nem sabia da sua existência e até agora, o meu sentimento por você cresce cada dia mais, você é minha rocha, o meu ombro quando eu estiver triste, os meus olhos quando eu não consigo enxergar a saída, o meu pé quando estou impossibilitado de andar, você é incrível meu amor.</p>
+        <p>Obrigado por tudo que tem feito por mim nesse último ano e para encerrar sua surpresa vá até a próxima página!</p>
+      </div>
+    </div>
+    <button class="nav-button right" onclick="nextImage()">&#10095;</button>
+  </div>
+
+ <!-- Script para animação de imagens -->
+ <script>
+    let currentIndex = 0;
+    const gallery = document.querySelector('.gallery');
+    const items = document.querySelectorAll('.gallery-item');
+
+    function updateGalleryPosition() {
+      gallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+    }
+
+    function prevImage() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateGalleryPosition();
+      }
+    }
+
+    function nextImage() {
+      if (currentIndex < items.length - 1) {
+        currentIndex++;
+        updateGalleryPosition();
+      }
+    }
+
+    // Gerar estrelas
+    function createStars() {
+      for (let i = 0; i < 100; i++) {
+        const star = document.createElement('div');
+        star.classList.add('star');
+        star.style.left = `${Math.random() * 100}vw`;
+        star.style.top = `${Math.random() * 100}vh`;
+        star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+        document.body.appendChild(star);
+      }
+    }
+    createStars();
+  </script>
+</body>
+</html>
